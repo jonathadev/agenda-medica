@@ -40,7 +40,7 @@ agenda-medica/
 │   │   ├── service.ts            # Serviços de agendamento
 │   │   └── validation.ts          # Validação dos dados de entrada
 │   │
-│   └── index.ts                  # Ponto de entrada da aplicação// nao ten
+│   └── index.ts                  # Ponto de entrada da aplicação// não tem
 │
 ├── package.json                   # Dependências e scripts do projeto
 └── serverless.yml                # Configuração do Serverless Framework
