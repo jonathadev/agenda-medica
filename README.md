@@ -69,6 +69,13 @@ npx serverless offline
 
 O servidor estará disponível em `http://localhost:3000`.
 
+rodando o npx serverless offline aparece mais endppoints entre eles
+endpoints
+
+get /agendas (http://localhost:3000/agendas)
+post /agendamento (http://localhost:3000/agendamento)
+
+
 ## Testes
 
 Para rodar os testes, utilize o seguinte comando:
