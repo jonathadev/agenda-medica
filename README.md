@@ -72,8 +72,50 @@ O servidor estará disponível em `http://localhost:3000`.
 rodando o npx serverless offline aparece mais endppoints entre eles
 endpoints
 
-get /agendas (http://localhost:3000/agendas)
-post /agendamento (http://localhost:3000/agendamento)
+  GET  | http://localhost:3000/agendas                                              │
+   │   POST | http://localhost:3000/2015-03-31/functions/getAgendas/invocations          │
+   │   POST | http://localhost:3000/agendamento                                          │
+   │   POST | http://localhost:3000/2015-03-31/functions/createAgendamento/invocations 
+
+
+Sobre endpoints  /invocations
+O endpoint `POST | http://localhost:3000/2015-03-31/functions/getAgendas/invocations` que você está vendo é uma URL gerada pelo framework Serverless quando você está rodando suas funções AWS Lambda localmente usando o plugin `serverless-offline`. Aqui está uma breve explicação sobre o que isso significa:
+
+### Estrutura do Endpoint
+
+- **`POST`**: Esse é o método HTTP que está sendo utilizado para chamar a função. Normalmente, as funções Lambda são invocadas via `POST`.
+
+- **`http://localhost:3000`**: Isso indica que o servidor está rodando localmente na sua máquina, na porta `3000`.
+
+- **`2015-03-31`**: Essa parte da URL se refere à versão da API da AWS Lambda. É um padrão usado para garantir que a chamada da função seja compatível com a versão da API.
+
+- **`functions/getAgendas`**: Isso se refere à função Lambda chamada `getAgendas`. É assim que o Serverless organiza as funções.
+
+- **`invocations`**: Esta parte indica que você está invocando (ou chamando) a função Lambda.
+
+### O Que Fazer com Isso
+
+Quando você usa `serverless-offline`, o plugin cria um ambiente simulado para as funções Lambda e suas APIs. Isso permite que você teste suas funções localmente sem precisar implantá-las na AWS. A URL que você mencionou é como você faria uma chamada para sua função `getAgendas`.
+
+### Testando a Função
+
+Para testar a função `getAgendas`, você pode usar ferramentas como Postman, Insomnia, ou mesmo o `curl` no terminal:
+
+```bash
+curl -X POST http://localhost:3000/2015-03-31/functions/getAgendas/invocations
+```
+
+### Considerações
+
+- Certifique-se de que o servidor `serverless-offline` está em execução. Se não estiver, você precisará iniciá-lo com o comando:
+
+```bash
+serverless offline
+```
+
+- Esse tipo de endpoint é gerado automaticamente e não precisa ser modificado. Ele é útil apenas para fins de teste local.
+
+Se precisar de mais esclarecimentos ou ajuda com a configuração, fique à vontade para perguntar!
 
 
 ## Testes
