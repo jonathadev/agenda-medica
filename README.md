@@ -19,32 +19,29 @@ Um sistema simples de agendamento de consultas médicas, permitindo que os pacie
 
 ## Estrutura do Projeto
 
-```plaintext
 agenda-medica/
 │
 ├── src/
 │   ├── agenda/
-│   │   ├── controller.ts         # Controlador para agendamento
-│   │   ├── interface.ts          # Interfaces para o projeto
-│   │   ├── mocks.ts              # Dados mockados para testes //desnecessario
-│   │   ├── service.ts            # Serviços de agendamento
-│   │   └── validation.ts          # Validação dos dados de entrada
-           └── /tests/
-               └── service.test.ts
+│   │   ├── agenda-controller.ts     # Controlador para operações de agendas
+│   │   ├── agenda-interface.ts      # Interface para a estrutura de dados de agendas
+│   │   ├── agenda-service.ts        # Serviços relacionados às agendas
+│   │   ├── agenda-validation.ts     # Validação dos dados de entrada de agendas
+│   │   └── /tests/
+│   │       └── agenda-service.test.ts # Testes unitários para o serviço de agendas
 │   │
 │   ├── agendamento/
-│   │   ├── controller.ts         # Controlador para agendamentos
-│   │   ├── interface.ts          # Interfaces para agendamentos
-│   │   ├── dto.ts                # Descrição do DTO para agendamentos //desnecessario
-│   │   ├── mocks.ts              # Dados mockados para agendamentos
-│   │   ├── service.ts            # Serviços de agendamento
-│   │   └── validation.ts          # Validação dos dados de entrada
-│   │
-│   └── index.ts                  # Ponto de entrada da aplicação// não tem
+│   │   ├── agendamento-controller.ts # Controlador para operações de agendamentos
+│   │   ├── agendamento-interface.ts  # Interface para estrutura de dados de agendamentos
+│   │   ├── agendamento-dto.ts        # DTO para padronização de dados de agendamentos
+│   │   ├── agendamento-mocks.ts      # Dados mockados para testes de agendamentos
+│   │   ├── agendamento-service.ts    # Serviços relacionados aos agendamentos
+│   │   └── agendamento-validation.ts # Validação dos dados de entrada de agendamentos
 │
-├── package.json                   # Dependências e scripts do projeto
-└── serverless.yml                # Configuração do Serverless Framework
-```
+├── package.json                       # Dependências e scripts do projeto
+├── serverless.yml                     # Configuração do Serverless Framework
+└── README.md                          # Documentação do projeto
+
 
 ## Instalação
 
