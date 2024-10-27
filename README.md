@@ -108,7 +108,16 @@ Para testar a função `getAgendas`, você pode usar ferramentas como Postman, I
 curl -X POST http://localhost:3000/2015-03-31/functions/getAgendas/invocations
 ```
 
+### Considerações
 
+- Certifique-se de que o servidor `serverless-offline` está em execução. Se não estiver, você precisará iniciá-lo com o comando:
+
+```bash
+serverless offline
+```
+
+- Esse tipo de endpoint é gerado automaticamente e não precisa ser modificado. Ele é útil apenas para fins de teste local.
+  
 
 ##  O **Serverless Framework** por padrão define o estágio como `dev` se nenhum estágio específico for configurado. 
 Para forçar a ausência do prefixo no ambiente local, uma abordagem eficaz é definir o estágio explicitamente no momento de execução ou configurar um nome customizado.
@@ -183,20 +192,6 @@ Essas configurações devem garantir que você possa acessar suas rotas no forma
 
 Nota
 Essas configurações são específicas para o ambiente de desenvolvimento local. Quando você fizer o deploy na AWS, o estágio será importante para organizar suas rotas e separá-las por ambiente (desenvolvimento, produção, etc.). Assim, evite usar uma string vazia em produção para evitar conflitos.
-
-
-
-### Considerações
-
-- Certifique-se de que o servidor `serverless-offline` está em execução. Se não estiver, você precisará iniciá-lo com o comando:
-
-```bash
-serverless offline
-```
-
-- Esse tipo de endpoint é gerado automaticamente e não precisa ser modificado. Ele é útil apenas para fins de teste local.
-
-Se precisar de mais esclarecimentos ou ajuda com a configuração, fique à vontade para perguntar!
 
 
 ## Testes
