@@ -78,7 +78,9 @@ endpoints
    │   POST | http://localhost:3000/2015-03-31/functions/createAgendamento/invocations 
 
 
-Sobre endpoints  /invocations
+## Sobre endpoints 
+
+/invocations
 
 O endpoint `POST | http://localhost:3000/2015-03-31/functions/getAgendas/invocations` que você está vendo é uma URL gerada pelo framework Serverless quando você está rodando suas funções AWS Lambda localmente usando o plugin `serverless-offline`. Aqui está uma breve explicação sobre o que isso significa:
 
@@ -106,6 +108,84 @@ Para testar a função `getAgendas`, você pode usar ferramentas como Postman, I
 curl -X POST http://localhost:3000/2015-03-31/functions/getAgendas/invocations
 ```
 
+
+
+##  O **Serverless Framework** por padrão define o estágio como `dev` se nenhum estágio específico for configurado. 
+Para forçar a ausência do prefixo no ambiente local, uma abordagem eficaz é definir o estágio explicitamente no momento de execução ou configurar um nome customizado.
+
+Aqui estão algumas opções:
+
+### 1. Executar com um Estágio Vazio no Comando de Inicialização
+
+Ao executar `serverless offline`, você pode especificar o estágio diretamente no comando para sobrescrever o valor padrão `dev`. No terminal, execute:
+
+```bash
+npx serverless offline --stage ""
+```
+
+Isso indica explicitamente ao Serverless Framework para usar um estágio vazio, removendo o prefixo `/dev` das rotas.
+
+### 2. Definir Estágio Customizado para Desenvolvimento Local
+
+Outra abordagem é criar um estágio customizado específico para o ambiente local, como `offline`, e configurá-lo para não adicionar o prefixo. No `serverless.yml`:
+
+```yaml
+service: agenda-medica
+
+frameworkVersion: ">=4.0.0"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  stage: offline  # Defina o estágio para 'offline' ou outro nome customizado
+
+plugins:
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true  # Evita o prefixo do estágio nas rotas
+    port: 3000                 # Define a porta
+
+functions:
+  getAgendas:
+    handler: src/agenda/controller.getAgendas
+    events:
+      - http:
+          path: agendas
+          method: get
+
+  createAgendamento:
+    handler: src/agendamento/controller.createAgendamento
+    events:
+      - http:
+          path: agendamento
+          method: post
+```
+
+### 3. Forçar o `noStage` para Rotas de Desenvolvimento
+
+Algumas versões do `serverless-offline` possuem a configuração `noPrependStageInUrl`, que ajuda a remover o prefixo de estágio nas rotas:
+
+```yaml
+custom:
+  serverless-offline:
+    noPrependStageInUrl: true
+```
+
+### Resultado
+
+Essas configurações devem garantir que você possa acessar suas rotas no formato:
+
+- `http://localhost:3000/agendas`
+- `http://localhost:3000/agendamento`
+
+Nota
+Essas configurações são específicas para o ambiente de desenvolvimento local. Quando você fizer o deploy na AWS, o estágio será importante para organizar suas rotas e separá-las por ambiente (desenvolvimento, produção, etc.). Assim, evite usar uma string vazia em produção para evitar conflitos.
+
+
+
 ### Considerações
 
 - Certifique-se de que o servidor `serverless-offline` está em execução. Se não estiver, você precisará iniciá-lo com o comando:
@@ -127,7 +207,7 @@ Para rodar os testes, utilize o seguinte comando:
 npm run test
 ```
 
-Melhorias
+## Melhorias
 
 usar colocar dto em agendas
 uma validacao em agendas? 
