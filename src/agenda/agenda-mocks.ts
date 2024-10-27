@@ -1,4 +1,4 @@
-import { Medico } from './interface';
+import { Medico } from './agenda-interface';
 
 export const mockAgendas: Medico[] = [
   {

@@ -1,6 +1,6 @@
-import { getAgendasService } from '../service';
+import { getAgendasService } from '../agenda-service';
 
-jest.mock('../service', () => ({
+jest.mock('../agenda-service', () => ({
   getAgendasService: jest.fn(),
 }));
 

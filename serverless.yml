@@ -18,14 +18,14 @@ custom:
 
 functions:
   getAgendas:
-    handler: src/agenda/controller.getAgendas
+    handler: src/agenda/agenda-controller.getAgendas
     events:
       - http:
           path: agendas
           method: get
 
   createAgendamento:
-    handler: src/agendamento/controller.createAgendamento
+    handler: src/agendamento/agendamento-controller.createAgendamento
     events:
       - http:
           path: agendamento

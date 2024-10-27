@@ -1,5 +1,5 @@
 import { APIGatewayEvent, Context } from 'aws-lambda';
-import { getAgendasService } from './service';
+import { getAgendasService } from './agenda-service';
 
 export const getAgendas = async (event: APIGatewayEvent, context: Context) => {
   const agendas = await getAgendasService();

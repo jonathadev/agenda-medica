@@ -1,4 +1,4 @@
-import { Agendamento } from './interface'; // Certifique-se de importar a interface
+import { Agendamento } from './agendamento-interface'; // Certifique-se de importar a interface
 
 export const createAgendamentoService = async (data: Agendamento) => {
   // Aqui você pode adicionar lógica para verificar a disponibilidade do médico

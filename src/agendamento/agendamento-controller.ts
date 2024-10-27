@@ -1,7 +1,7 @@
 import { APIGatewayEvent, Context } from 'aws-lambda';
-import { createAgendamentoService } from '../agendamento/service';
-import { Agendamento } from '../agendamento/interface';
-import { validateAgendamento } from '../agendamento/validation';
+import { createAgendamentoService } from './agendamento-service';
+import { Agendamento } from './agendamento-interface';
+import { validateAgendamento } from './agendamento-validation';
 
 export const createAgendamento = async (event: APIGatewayEvent, context: Context) => {
   try {
