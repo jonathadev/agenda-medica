@@ -83,6 +83,29 @@ Para rodar os testes, utilize o seguinte comando:
 ```bash
 npm run test
 ```
+Melhorias
+usar colocar dto em agendas
+uma validacao em agendas? 
+
+usar colocar dto em agendamento para validar post
+mosks em agendamento nao usados
+
+Sobre DTO
+Se você está usando apenas a interface e não precisa da complexidade adicional que um DTO (Data Transfer Object) pode trazer, não é obrigatório manter ambos. A decisão de usar uma interface, um DTO ou ambos depende da arquitetura e dos requisitos do seu projeto. Vamos analisar as diferenças e quando usar cada um:
+
+Quando usar apenas a Interface
+Simplicidade: Se a estrutura de dados é simples e não precisa de transformação ou validação adicional, você pode usar apenas a interface.
+Tipo de Dados: A interface pode ser suficiente para definir o formato dos dados que você está trabalhando. Isso é comum em situações onde você apenas deseja tipar dados recebidos ou enviados, sem realizar validações complexas.
+Quando usar um DTO
+Validação: Se você precisa validar a entrada de dados antes de usá-los na lógica de negócios, um DTO pode ser útil. Você pode aplicar validações diretamente ao DTO usando bibliotecas como Joi.
+Transformação de Dados: Quando os dados recebidos precisam ser transformados ou processados antes de serem usados, um DTO pode ajudar a encapsular essa lógica.
+Encapsulamento: Um DTO pode ser usado para encapsular dados que não devem ser diretamente expostos, ajudando a proteger sua lógica interna.
+
+Resumindo
+Se a interface é suficiente para atender às suas necessidades de tipo de dados e não há necessidade de validação ou transformação complexa, você pode manter apenas a interface.
+Se você achar que precisa de validação e transformação de dados no futuro, pode considerar a introdução de um DTO posteriormente.
+Fique à vontade para adaptar seu código conforme necessário! Se precisar de mais ajuda ou quiser discutir algo específico, é só avisar!
+
 
 ## Contribuição
 
